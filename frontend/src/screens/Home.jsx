@@ -10,7 +10,7 @@ function Home() {
   const [foodItems, setFoodItems] = useState([]);
 
   const loadFoodItems = async () => {
-    let response = await fetch("http://localhost:9000/api/data/foodData",{
+    let response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/data/foodData",{
       method: "GET",
       headers:{
         'content-Type': "application/json",
