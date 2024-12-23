@@ -53,7 +53,7 @@ const check_out = asyncHandler( async (req, res) => {
 })
 
 const my_orders = asyncHandler(async (req, res) => {
-    const data = await Order.findOne({ email: "dipu.don@gmail.com" });
+    const data = await Order.findOne({ email: req.body.email });
 
     if (!data) {
         return res
