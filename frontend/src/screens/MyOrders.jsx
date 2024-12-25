@@ -4,7 +4,7 @@ function MyOrders() {
     const [orders, setOrders] = useState([]);
 
     const loadOrders = async () => {
-        let response = await fetch("http://localhost:9000/api/data/myOrders", {
+        let response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/data/myOrders", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

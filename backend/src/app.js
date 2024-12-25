@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended:true, limit:"16kb"}));
 app.use(express.static("public"));
 // another way to handle cors error
 app.use((req, res, next) => {
-    res.setHeader("Access-control-allow-origin", "http://localhost:5173");
+    res.setHeader("Access-control-allow-origin", "https://webomato.netlify.app");
     res.setHeader(
         "Access-Control-Allow-Methods",
         "GET, POST, PUT, DELETE, OPTIONS"
