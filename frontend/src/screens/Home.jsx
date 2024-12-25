@@ -10,7 +10,7 @@ function Home() {
   const [foodItems, setFoodItems] = useState([]);
 
   const loadFoodItems = async () => {
-    let response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/data/foodData",{
+    let response = await fetch("http://localhost:9000/api/data/foodData",{
       method: "GET",
       headers:{
         'content-Type': "application/json",
@@ -62,25 +62,25 @@ function Home() {
             </div>
             <div className="carousel-item active">
               <img
-                src="https://picsum.photos/id/1/500 "
+                src="https://static.vecteezy.com/system/resources/thumbnails/015/933/115/small_2x/chole-bhature-is-a-north-indian-food-dish-a-combination-of-chana-masala-and-bhatura-or-puri-free-photo.jpg"
                 className="d-block w-100  "
-                style={{ filter: "brightness(30%)", height:"500px", objectFit:"contain !important" }}
+                style={{ filter: "brightness(30%)", height:"700px", objectFit:"contain !important" }}
                 alt="..."
               />
             </div>
             <div className="carousel-item">
               <img
-                src="https://picsum.photos/id/2/500 "
+                src="https://paattiskitchen.com/wp-content/uploads/2023/04/kmc_20230401_003949-1.jpg"
                 className="d-block w-100 "
-                style={{ filter: "brightness(30%)", height:"500px", objectFit:"contain !important" }}
+                style={{ filter: "brightness(30%)", height:"700px", objectFit:"contain !important" }}
                 alt="..."
               />
             </div>
             <div className="carousel-item">
               <img
-                src="https://picsum.photos/id/3/500 "
-                className="d-block w-100 "
-                style={{ filter: "brightness(30%)",height:"500px", objectFit:"contain !important" }}
+                src="https://cdn.sanity.io/images/cctd4ker/production/9dfaeda73538877faf9c927ec8c8d6863c2c2111-4800x3200.jpg?w=3840&q=75&fit=clip&auto=format"
+                className="d-block w-100 "  
+                style={{ filter: "brightness(30%)",height:"700px", objectFit:"contain !important" }}
                 alt="..."
               />
             </div>

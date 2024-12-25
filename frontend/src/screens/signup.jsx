@@ -15,7 +15,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/register", {
+    const response = await fetch("http://localhost:9000/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ function Signup() {
     if(json.success){
         localStorage.setItem('userEmail', credentials.email)
         localStorage.setItem('token', json.authToken);
-        navigate("/login");
+        navigate("/");
     }else{
         alert("Invalid credentials");
     }

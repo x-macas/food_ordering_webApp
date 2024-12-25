@@ -18,7 +18,7 @@ export default function Cart() {
   const handleCheckOut = async () => {      
     let userEmail = localStorage.getItem("userEmail");
     // console.log(data,localStorage.getItem("userEmail"),new Date())
-    let response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/data/checkOut", {
+    let response = await fetch("http://localhost:9000/api/data/checkOut", {
       // credentials: 'include',
       // Origin:"http://localhost:3000/login",
       method: 'POST',
