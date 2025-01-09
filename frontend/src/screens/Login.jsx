@@ -9,7 +9,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/login", {
+    let response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/login", {
       method: "POST",
       headers: {
         "content-Type": "application/json",
@@ -23,10 +23,8 @@ function Login() {
     const json = await response.json();
     console.log(json);
     if(json.success){
-      // console.log(localStorage.getItem("userEmail"));
       localStorage.setItem('userEmail', credentials.email);
       localStorage.setItem('token', json.authToken);
-      // console.log(localStorage.getItem("userEmail"));
       navigate("/");
     }else{
       alert("Invalid Credentials");
@@ -37,6 +35,9 @@ function Login() {
     setCredentials({...credentials, [e.target.name]:e.target.value});
   }
 
+  const handleGoogle = async () =>{
+    window.location.href = "https://dipteshs-food-ordering-webapp.onrender.com/api/auth/google";
+  }
 
   return (
     <div style={{backgroundImage: 'url("https://images.pexels.com/photos/326278/pexels-photo-326278.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")', height: '100vh', backgroundSize: 'cover' }}>
@@ -57,6 +58,7 @@ function Login() {
           <button type="submit" className="m-3 btn btn-success">Submit</button>
           <Link to="/signup" className="m-3 mx-1 btn btn-danger">New User</Link>
         </form>
+          <button onClick={handleGoogle} className="m-3 btn btn-success">Google Sign In</button>
 
       </div>
     </div>
