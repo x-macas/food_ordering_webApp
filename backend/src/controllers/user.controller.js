@@ -135,7 +135,7 @@ const handleGoogleRedirect = asyncHandler(async (req, res) => {
     res.cookie("accessToken", accessToken, options);
 
     // Redirect to the frontend after setting the cookie
-    res.redirect("https://webomato.netlify.app/");
+    res.redirect("https://webomato.netlify.app");
 });
 
 

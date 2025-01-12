@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} /> 
           <Route exact path="/myOrders" element={<MyOrders />} />
-          <Route exact path='/googleauth' element={<GoogleAuth />} />
+          {/* <Route exact path='/authgoogle' element={<GoogleAuth />} /> */}
         </Routes>
       </Router>
     </CartProvider>

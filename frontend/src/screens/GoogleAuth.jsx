@@ -2,9 +2,20 @@ import React, { useEffect } from "react";
 
 function GoogleAuth() {
   const handleGoogleRedirect = async () => {
+
+    const currentURL = window.location.href;
+    const link2 = "https://dipteshs-food-ordering-webapp.onrender.com/api/auth/google/webomato"
+    const baseURL = "https://webomato.netlify.app";
+
+    const suffix = currentURL.replace(baseURL, "");
+
+    const result = link2.replace(/\/$/, "") + suffix;
+
+    const result2 = result.replace('/authgoogle', '');
+
     try {
       const response = await fetch(
-        "https://dipteshs-food-ordering-webapp.onrender.com/api/auth/google/webomato",
+        result2,
         { method: "GET", credentials: "include" } // Include cookies
       );
 

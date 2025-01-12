@@ -22,12 +22,12 @@ app.use(passport.session());
 
 // another way to handle cors error
 app.use(cors({
-    origin: "https://webomato.netlify.app/", // Allow your frontend
+    origin: "https://webomato.netlify.app", // Allow your frontend
     credentials: true,              // Allow cookies or credentials
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 }));
 app.use((req, res, next) => {
-    res.setHeader("Access-control-allow-origin", "https://webomato.netlify.app/");
+    res.setHeader("Access-control-allow-origin", "https://webomato.netlify.app");
     res.setHeader(
         "Access-Control-Allow-Methods",
         "GET, POST, PUT, DELETE, OPTIONS"
