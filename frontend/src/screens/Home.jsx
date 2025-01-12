@@ -39,7 +39,7 @@ function Home() {
 
   useEffect(()=>{
     loadFoodItems();
-    // fetchGoogleAuthData();
+    fetchGoogleAuthData();
   },[]);
 
 
