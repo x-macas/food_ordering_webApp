@@ -9,7 +9,7 @@ const verifyToken = asyncHandler(async(req, res, next) => {
         
         // console.log(token);
         if (!token) {
-            throw new ApiError(401, "Unauthorizeds request")
+            throw new ApiError(401, "Unauth request")
         }
     
         const user = await User.findOne({accessToken: token});

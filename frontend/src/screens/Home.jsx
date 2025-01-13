@@ -23,7 +23,7 @@ function Home() {
   };
   
   const fetchGoogleAuthData = async () => {
-      const response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/google/data", {
+      let response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/google/data", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

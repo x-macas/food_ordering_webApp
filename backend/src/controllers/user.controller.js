@@ -124,10 +124,11 @@ const loginUser = asyncHandler( async(req, res) => {
 
 const handleGoogleRedirect = asyncHandler(async (req, res) => {
     const options = {
-        httpOnly: true, // Prevents client-side JS access
-        secure: process.env.NODE_ENV === "production", // Ensures secure cookie transmission in production
-        sameSite: "lax", // Restricts cookie to same-site or top-level navigation
-    };
+        httpOnly: true, // Prevents client-side access
+        secure: true, // Ensures cookies are sent over HTTPS
+        sameSite: "none", // Allows cross-site requests
+        // domain: ".render.com", // Set this to the backend's domain
+    };      
 
     const accessToken = req.user.accessToken;
 
