@@ -154,7 +154,7 @@ const logoutUser = asyncHandler(async (req, res) => {
     const options = {
         httpOnly: true, // Matches the cookie settings used during authentication
         secure: process.env.NODE_ENV === "production", // Same as your cookie settings
-        sameSite: "lax", // Or "strict" based on your original configuration
+        sameSite: "none", // Or "strict" based on your original configuration
     };
 
     // Clear the cookie
