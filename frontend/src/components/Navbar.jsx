@@ -57,7 +57,7 @@ function Navbar() {
       navigate("/login");
   };
   console.log(accessToken);
-  console.log(localStorage.getItem("userEmail"));
+  console.log(localStorage.getItem("userEmail"), accessToken);
 
   return (
     <div>
