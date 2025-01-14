@@ -31,8 +31,12 @@ function Navbar() {
   };
 
   useEffect(()=>{
-    fetchGoogleAuthData();
-    setAccessToken(localStorage.getItem("token"));
+    const token = localStorage.getItem("token");
+    if (token) {
+      setAccessToken(token);
+    } else {
+      fetchGoogleAuthData();
+    }
   },[]);
 
   const handleLogOut = async () => {
