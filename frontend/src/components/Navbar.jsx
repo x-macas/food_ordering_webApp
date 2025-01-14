@@ -30,14 +30,14 @@ function Navbar() {
     }
   };
 
-  useEffect(()=>{
+  // useEffect(()=>{
     const token = localStorage.getItem("token");
     if (token) {
       setAccessToken(token);
     } else {
       fetchGoogleAuthData();
     }
-  },[]);
+  // },[]);
 
   const handleLogOut = async () => {
       localStorage.removeItem("userEmail");
