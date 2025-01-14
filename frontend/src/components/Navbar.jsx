@@ -22,15 +22,17 @@ function Navbar() {
       },
       credentials: "include"
     });
-
-    const json = await response.json();
-    localStorage.setItem("userEmail", json.data[0]);
-    localStorage.setItem("token", json.data[1]);
-    setAccessToken(localStorage.getItem("token"));
+    if(response.ok){
+      const json = await response.json();
+      localStorage.setItem("userEmail", json.data[0]);
+      localStorage.setItem("token", json.data[1]);
+      setAccessToken(localStorage.getItem("token"));
+    }
   };
 
   useEffect(()=>{
     fetchGoogleAuthData();
+    setAccessToken(localStorage.getItem("token"));
   },[]);
 
   const handleLogOut = async () => {
@@ -47,7 +49,7 @@ function Navbar() {
       } else {
         console.error("Logout failed", response.status, response.statusText);
       }
-  
+      setAccessToken(null);
       navigate("/login");
   };
   
