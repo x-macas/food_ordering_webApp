@@ -52,7 +52,7 @@ function Navbar() {
       setAccessToken(null);
       navigate("/login");
   };
-  
+  console.log(accessToken);
   console.log(localStorage.getItem("userEmail"));
 
   return (
