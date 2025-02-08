@@ -9,9 +9,9 @@ function Signup() {
     
     const [credentials, setCredentials] = useState({ fullName: "", email: "", password: "", geolocation: ""});
 
-    const handleClick = () =>{
+    // const handleClick = () =>{
         
-    }
+    // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();

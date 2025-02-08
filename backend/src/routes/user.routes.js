@@ -1,13 +1,13 @@
 const {Router} = require("express");
-const {registerUser, loginUser, handleGoogleRedirect, googleData, logoutUser} = require("../controllers/user.controller.js");
+const {registerUser,loginUser, logoutUser} = require("../controllers/user.controller.js");
 const {body} = require("express-validator");
 const router = Router();
 const passport = require("passport");
 const verifyToken = require("../middlewares/auth.middleware.js");
 
-const googleRedirectOauth = passport.authenticate("google", {
-    failureRedirect: "/login",
-  });
+// const googleRedirectOauth = passport.authenticate("google", {
+//     failureRedirect: "/login",
+//   });
 
 router.route("/register").post([
     body('email').isEmail(),
@@ -25,8 +25,8 @@ router.route("/login").post([
 );
 router.route("/logout").get(logoutUser);
 
-router.route("/google").get(passport.authenticate("google", { scope: ["profile", "email"] }));
-router.route("/google/webomato").get(googleRedirectOauth, handleGoogleRedirect);
-router.route("/google/data").get(verifyToken,googleData);
+// router.get("/google", googleAuth);
+// router.get("/google/callback", googleCallback);
+// router.get("/user", getUser);
 
 module.exports = router;

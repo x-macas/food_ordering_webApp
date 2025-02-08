@@ -4,42 +4,59 @@ import Badge from "react-bootstrap/Badge";
 import { useCart } from "./contextReducer.jsx";
 import Cart from "../screens/Cart.jsx";
 import Modal from "../screens/Modal.jsx";
+import { useFirebase } from "../screens/context/Firebase.jsx";
 // import Cookie from "js-cookie";
 
 function Navbar() {
   const data = useCart();
   const [accessToken, setAccessToken] = useState(null);
+  const [profile, setProfile] = useState(null);
   const [cartView, setCartView] = useState(false);
+  const firebase = useFirebase();
   const navigate = useNavigate();
   const location = useLocation(); // Hook to track location changes
 
 
-  const fetchGoogleAuthData = async () => {
-    const response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/google/data", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include"
-    });
-    if(response.ok){
-      const json = await response.json();
-      localStorage.setItem("userEmail", json.data[0]);
-      localStorage.setItem("token", json.data[1]);
-      setAccessToken(localStorage.getItem("token"));
-    }
-  };
+  // const fetchGoogleAuthData = async () => {
+  //   const response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/google/data", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     credentials: "include"
+  //   });
+  //   if(response.ok){
+  //     const json = await response.json();
+  //     localStorage.setItem("userEmail", json.data[0]);
+  //     localStorage.setItem("token", json.data[1]);
+  //     setAccessToken(localStorage.getItem("token"));
+  //   }
+  // };
 
-  // useEffect(()=>{
+  useEffect(()=>{
     const token = localStorage.getItem("token");
+    const profile = localStorage.getItem("profile");
     if (token) {
       setAccessToken(token);
     } else {
-      fetchGoogleAuthData();
+      setAccessToken(null);
     }
-  // },[]);
+    if(profile){
+      setProfile(profile);
+    }else{
+      setProfile(null);
+    }
+  },[]);
 
   const handleLogOut = async () => {
+
+      if(profile){
+        console.log(profile);
+        localStorage.removeItem("profile");
+        setProfile(null);
+        firebase.signOut(firebase.firebaseAuth);
+      }
+
       localStorage.removeItem("userEmail");
       localStorage.removeItem("token");
   
@@ -56,8 +73,8 @@ function Navbar() {
       setAccessToken(null);
       navigate("/login");
   };
-  console.log(accessToken);
-  console.log(localStorage.getItem("userEmail"), accessToken);
+  // console.log(accessToken);
+  // console.log(localStorage.getItem("userEmail"), accessToken);
 
   return (
     <div>

@@ -22,24 +22,24 @@ function Home() {
     setFoodCat(response.data[1]);
   };
   
-  const fetchGoogleAuthData = async () => {
-      let response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/google/data", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include"
-      });
+  // const fetchGoogleAuthData = async () => {
+  //     let response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/google/data", {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       credentials: "include"
+  //     });
 
-      const json = await response.json();
-      localStorage.setItem("userEmail", json.data[0]);
-      localStorage.setItem("token", json.data[1]);
-  };
+  //     const json = await response.json();
+  //     localStorage.setItem("userEmail", json.data[0]);
+  //     localStorage.setItem("token", json.data[1]);
+  // };
 
 
   useEffect(()=>{
     loadFoodItems();
-    fetchGoogleAuthData();
+    // fetchGoogleAuthData();
   },[]);
 
 

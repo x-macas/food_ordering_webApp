@@ -8,7 +8,6 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import { CartProvider } from './components/contextReducer.jsx';
 import MyOrders from './screens/MyOrders.jsx';
-import GoogleAuth from './screens/googleAuth.jsx';
 
 function App() {
 
@@ -20,7 +19,6 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} /> 
           <Route exact path="/myOrders" element={<MyOrders />} />
-          {/* <Route exact path='/authgoogle' element={<GoogleAuth />} /> */}
         </Routes>
       </Router>
     </CartProvider>

@@ -1,24 +1,31 @@
 const express = require("express");
-const passport = require("passport");
-const session = require("express-session");
+// const passport = require("passport");
+// const session = require("express-session");
 const userRouter = require("./routes/user.routes.js");
 const foodDataRouter = require("./routes/foodDataroutes.js");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const app = express();
+// require("./auth/passport");
 
 // configurations for app
 app.use(express.json({limit:"16kb"}));
 app.use(express.urlencoded({extended:true, limit:"16kb"}));
 app.use(express.static("public"));
 app.use(cookieParser());
-app.use(session({
-    secret:"Our little Secret",
-    resave: false,
-    saveUninitialized: true,
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(session({
+//     secret:"Our little Secret",
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie:{
+//         secure: false,
+//         // httpOnly: true,
+//         sameSite: "none"
+//     }
+// }));
+
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // another way to handle cors error
 app.use(cors({
@@ -26,6 +33,7 @@ app.use(cors({
     credentials: true,              // Allow cookies or credentials
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 }));
+
 app.use((req, res, next) => {
     res.setHeader("Access-control-allow-origin", "https://webomato.netlify.app");
     res.setHeader(
