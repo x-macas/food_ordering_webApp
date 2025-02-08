@@ -10,7 +10,7 @@ import {
 
 const firebaseConfig = {
     apiKey: "AIzaSyCikSR1AVUrjmd-PcFleEQtoyOBXzeT7fc",
-    authDomain: "bookify-5683b.firebaseapp.com",
+    authDomain: "https://webomato.netlify.app/",
     projectId: "bookify-5683b",
     storageBucket: "bookify-5683b.firebasestorage.app",
     messagingSenderId: "302544363896",
