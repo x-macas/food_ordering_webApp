@@ -9,13 +9,15 @@ import {
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCikSR1AVUrjmd-PcFleEQtoyOBXzeT7fc",
-    authDomain: "https://webomato.netlify.app",
-    projectId: "bookify-5683b",
-    storageBucket: "bookify-5683b.firebasestorage.app",
-    messagingSenderId: "302544363896",
-    appId: "1:302544363896:web:c3ccaf1f36ebde866da88d"
-};
+    apiKey: "AIzaSyDz-X7f74U2-UynR0NmgHLfwgzw0liNkpU",
+    authDomain: "webomato.firebaseapp.com",
+    projectId: "webomato",
+    storageBucket: "webomato.firebasestorage.app",
+    messagingSenderId: "322583788809",
+    appId: "1:322583788809:web:df52b139eee301df39e7d8",
+    measurementId: "G-YR37FFX67H"
+  };
+  
 
 const firebaseApp = initializeApp(firebaseConfig); // Now, an instance of firebase app is created
 const firebaseAuth = getAuth(firebaseApp);
@@ -25,6 +27,9 @@ const googleProvider = new GoogleAuthProvider();
 const FirebaseContext = createContext();
 
 export const useFirebase = () => useContext(FirebaseContext);
+
+console.log(firebaseAuth);
+console.log(window.location.origin);
 
 export const FirebaseProvider = (props) => {
 
