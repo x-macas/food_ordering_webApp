@@ -10,7 +10,7 @@ import {
 
 const firebaseConfig = {
     apiKey: "AIzaSyDz-X7f74U2-UynR0NmgHLfwgzw0liNkpU",
-    authDomain: "webomato.firebaseapp.com",
+    authDomain: "webomato.netlify.app",
     projectId: "webomato",
     storageBucket: "webomato.firebasestorage.app",
     messagingSenderId: "322583788809",
