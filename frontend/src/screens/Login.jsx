@@ -151,12 +151,23 @@ function Login() {
           </Link>
         </form>
 
+          <div>or</div>
+
         <button onClick={()=>{
           firebase.signInWithGoogle()
           }}
            className="m-3 btn btn-success"
         >
-          Google Sign In
+          Sign in using Google
+          
+        </button>
+
+        <button onClick={()=>{
+          firebase.signInWithGithub()
+          }}
+           className="m-3 btn btn-success"
+        >
+          Sign in using Github
           
         </button>
 

@@ -4,7 +4,8 @@ import {
     getAuth,
     GoogleAuthProvider,
     signInWithPopup,
-    signOut
+    signOut,
+    GithubAuthProvider
 } from "firebase/auth";
 
 
@@ -23,6 +24,7 @@ const firebaseApp = initializeApp(firebaseConfig); // Now, an instance of fireba
 const firebaseAuth = getAuth(firebaseApp);
 
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const FirebaseContext = createContext();
 
@@ -37,8 +39,12 @@ export const FirebaseProvider = (props) => {
         return signInWithPopup(firebaseAuth, googleProvider);
     }
 
+    const signInWithGithub = () => {
+        return signInWithPopup(firebaseAuth, githubProvider);
+    }
 
-    return <FirebaseContext.Provider value={{signInWithGoogle, signOut, firebaseAuth }}>
+
+    return <FirebaseContext.Provider value={{signInWithGoogle, signOut, firebaseAuth, signInWithGithub }}>
         {props.children}
     </FirebaseContext.Provider>
 }
