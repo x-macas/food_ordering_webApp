@@ -50,7 +50,7 @@ function Card(props) {
     // console.log(food.length);
     if (!(!(food) || food.length===0)) { // dimaag kharab kar diya h ye :(
       if (food.size === size) {
-        console.log("Hola");
+        // console.log("Hola");
         await dispatch({ type: "UPDATE", id: foodItem._id, price: finalPrice, qty: qty });
       } else {
         // console.log("Hola");

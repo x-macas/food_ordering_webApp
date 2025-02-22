@@ -4,10 +4,10 @@ const User = require("../models/user.model.js");
 
 const verifyToken = asyncHandler(async(req, res, next) => {
     try {
-        console.log(req.cookies);
+        // console.log(req.cookies);
         const token = req.cookies?.accessToken;
         
-        console.log(token);
+        // console.log(token);
         if (!token) {
             throw new ApiError(401, "Unauthorized request")
         }

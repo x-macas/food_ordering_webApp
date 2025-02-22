@@ -15,7 +15,7 @@ function MyOrders() {
         });
 
         response = await response.json();
-        console.log(response);
+        // console.log(response);
         setOrders(response.data);
     };
 
