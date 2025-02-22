@@ -30,8 +30,8 @@ const FirebaseContext = createContext();
 
 export const useFirebase = () => useContext(FirebaseContext);
 
-console.log(firebaseAuth);
-console.log(window.location.origin);
+// console.log(firebaseAuth);
+// console.log(window.location.origin);
 
 export const FirebaseProvider = (props) => {
 

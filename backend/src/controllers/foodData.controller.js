@@ -19,7 +19,7 @@ const check_out = asyncHandler( async (req, res) => {
             email: req.body.email,
             order_data: [data],
         });
-        console.log(updated_data);
+        // console.log(updated_data);
 
         if(!updated_data){
             throw new ApiError(500, "Something went wrong while storing the order data");

@@ -32,7 +32,7 @@ function Login() {
       }
 
       const json = await response.json();
-      console.log(json);
+      // console.log(json);
 
       if (json.success) {
         localStorage.setItem('userEmail', credentials.email);

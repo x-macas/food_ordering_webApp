@@ -51,7 +51,7 @@ function Navbar() {
   const handleLogOut = async () => {
 
       if(profile){
-        console.log(profile);
+        // console.log(profile);
         localStorage.removeItem("profile");
         setProfile(null);
         firebase.signOut(firebase.firebaseAuth);
