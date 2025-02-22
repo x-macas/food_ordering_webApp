@@ -10,9 +10,9 @@ import {
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDz-X7f74U2-UynR0NmgHLfwgzw0liNkpU",
-    authDomain: "webomato.firebaseapp.com",
-    projectId: "webomato",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
     storageBucket: "webomato.firebasestorage.app",
     messagingSenderId: "322583788809",
     appId: "1:322583788809:web:df52b139eee301df39e7d8",

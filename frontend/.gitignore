@@ -1,24 +1,57 @@
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Dependencies
+node_modules/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Build output
+dist/
+build/
+.out/
+.next/
+.cache/
+
+# Local environment variables
+.env*
+!.env.example
+
+# Editor and OS-specific files
+.vscode/
+.idea/
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+
+# Testing
+coverage/
+*.snap
+
+# Miscellaneous
+*.swp
+*.swo
+*.swn
+*.bak
+
+# TypeScript
+*.tsbuildinfo
+
+# Package manager files
+.pnp
+.pnp.js
+
+# Firebase (if applicable)
+.firebaserc
+
+# Storybook
+.storybook/
+out/
+
+# SvelteKit (if applicable)
+.svelte-kit/
+
+# Next.js (if applicable)
+.next/
