@@ -1,5 +1,5 @@
 const {Router} = require("express");
-const {registerUser,loginUser, logoutUser, oauthUser} = require("../controllers/user.controller.js");
+const {registerUser,loginUser, logoutUser, oauthUser, oauthLoginUser} = require("../controllers/user.controller.js");
 const {body} = require("express-validator");
 const router = Router();
 const passport = require("passport");
@@ -25,7 +25,7 @@ router.route("/login").post([
 );
 
 router.route("/oauth").post(oauthUser);
-
+router.route("/oauthlogin").post(oauthLoginUser);
 router.route("/logout").get(logoutUser);
 
 // router.get("/google", googleAuth);

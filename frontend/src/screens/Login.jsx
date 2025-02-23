@@ -59,13 +59,37 @@ function Login() {
     })
   },[onAuthStateChanged])
 
-  useEffect(() => {
-    if (user) {
-      // console.log(user);
+  const firebaseAuthentication = async (user) => {
+    const response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/oauthlogin", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: user.displayName,
+          email : user.email,
+          accessToken: user.accessToken,
+          authProvider: "google"
+        })
+    })
+
+    if(response.ok){
       localStorage.setItem("profile", user.displayName);
       localStorage.setItem("token", user.accessToken);
       localStorage.setItem("userEmail", user.email);
       navigate("/");
+    }
+  }
+
+
+  useEffect(() => {
+    if (user) {
+      // console.log(user);
+      firebaseAuthentication(user);
+      // localStorage.setItem("profile", user.displayName);
+      // localStorage.setItem("token", user.accessToken);
+      // localStorage.setItem("userEmail", user.email);
+      // navigate("/");
     }
   }, [user, navigate]);  // Runs when user state changes
   

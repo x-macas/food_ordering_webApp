@@ -35,7 +35,7 @@ const passport = require("passport");
 
 
 const oauthUser = asyncHandler( async(req, res,next) => {
-    console.log(req.body);
+    //console.log(req.body);
     const {fullName, email, accessToken, authProvider} = req.body
 
     if(
@@ -57,6 +57,22 @@ const oauthUser = asyncHandler( async(req, res,next) => {
 
     return res.status(200).json({message: "Registration done successfully"});
 
+})
+
+const oauthLoginUser = asyncHandler( async (req,res,next) => {
+    const {fullName, email, accessToken, authProvider} = req.body
+
+    if(
+        [fullName, email, accessToken, authProvider].some((field) => field?.trim()==="")
+    ){
+        return res.status(404).json({message: "All fields are required"});
+    }
+
+    const curr_user = await User.findOne({email: email});
+
+    if(!curr_user){
+        throw new ApiError(404, "user does not exist");
+    }
 })
 
 
@@ -112,7 +128,7 @@ const loginUser = asyncHandler( async(req, res) => {
         throw new ApiError(404, "User does not exist")
     }
     const pwdCompare = await bcrypt.compare(password, user.password); 
-    console.log(pwdCompare);
+    //console.log(pwdCompare);
 
     if(!pwdCompare){
         throw new ApiError(401, "Invalid user credentials")
@@ -162,4 +178,4 @@ const logoutUser = asyncHandler(async (req, res) => {
 });
 
 
-module.exports = {registerUser,loginUser, logoutUser, oauthUser};
+module.exports = {registerUser,loginUser, logoutUser, oauthUser, oauthLoginUser};

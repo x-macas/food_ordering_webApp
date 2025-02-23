@@ -66,7 +66,7 @@ function Navbar() {
       });
   
       if (response.ok) {
-        console.log("Logout successful");
+        //console.log("Logout successful");
       } else {
         console.error("Logout failed", response.status, response.statusText);
       }
