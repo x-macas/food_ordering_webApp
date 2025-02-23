@@ -5,6 +5,13 @@ const {Schema} = mongoose
 
 const userSchema = new Schema(
     {
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            lowercase: true,
+            trim: true, 
+        },
         fullName: {
             type: String,
             required: true,
@@ -18,14 +25,14 @@ const userSchema = new Schema(
         },
         password: {
             type: String,
-            // required: [true, 'Password is required']
+            required: function(){
+                return this.authProvider === "local"; //only required password for local auth
+            }
         },
-        email: {
+        authProvider: {
             type: String,
-            required: true,
-            unique: true,
-            lowercase: true,
-            trim: true, 
+            enum: ["local", "google"],
+            required: true
         },
         location:{
             type: String,

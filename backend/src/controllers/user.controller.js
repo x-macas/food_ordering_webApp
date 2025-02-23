@@ -34,6 +34,30 @@ const passport = require("passport");
 // };
 
 
+const oauthUser = asyncHandler( async(req, res,next) => {
+    console.log(req.body);
+    const {fullName, email, accessToken, authProvider} = req.body
+
+    if(
+        [fullName, email, accessToken, authProvider].some((field) => field?.trim()==="")
+    ){
+        return res.status(404).json({message: "All fields are required"});
+    }
+
+    const oauthClient = await User.create({
+        email: email,
+        fullName: fullName,
+        authProvider: authProvider,
+        accessToken: accessToken
+    })
+
+    if(!oauthClient){
+        throw new ApiError(500, "Something went wrong while registering the user");
+    }
+
+    return res.status(200).json({message: "Registration done successfully"});
+
+})
 
 
 
@@ -50,9 +74,10 @@ const registerUser = asyncHandler( async(req, res, next) => {
 
     try {
         const registeredUser = await User.create({
+            email: req.body.email,
             fullName: req.body.fullName.toLowerCase(),
             password: securePass,
-            email: req.body.email,
+            authProvider: req.body.authProvider,
             location: req.body.location,
         });
 
@@ -137,4 +162,4 @@ const logoutUser = asyncHandler(async (req, res) => {
 });
 
 
-module.exports = {registerUser,loginUser, logoutUser};
+module.exports = {registerUser,loginUser, logoutUser, oauthUser};
