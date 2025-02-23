@@ -1,17 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
+import { useFirebase } from "./context/Firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 function Signup() {
-
     const navigate = useNavigate();
-    
+    const firebase = useFirebase();
+    const [user, setUser] = useState(null);
     const [credentials, setCredentials] = useState({ fullName: "", email: "", password: "", geolocation: ""});
 
-    // const handleClick = () =>{
-        
-    // }
+    useEffect(()=>{
+        onAuthStateChanged(firebase.firebaseAuth, (user) => {
+            if(user){
+                setUser(user);
+            }else{{
+                setUser(null);
+            }}
+        })
+      },[onAuthStateChanged])
+    
+      const firebaseAuthentication = async (user) => {
+        const response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/oauth", {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              fullName: user.displayName,
+              email : user.email,
+              accessToken: user.accessToken,
+              authProvider: "google"
+            })
+        })
+    
+        if(response.ok){
+          localStorage.setItem("profile", user.displayName);
+          localStorage.setItem("token", user.accessToken);
+          localStorage.setItem("userEmail", user.email);
+          navigate("/");
+        }
+      }
+    
+      useEffect(() => {
+        if (user) {
+          // console.log(user);
+          firebaseAuthentication(user);
+        }
+      }, [user, navigate]);  // Runs when user state changes
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +61,7 @@ function Signup() {
         fullName: credentials.fullName,
         password: credentials.password,
         email: credentials.email,
+        authProvider: "local",
         location: credentials.geolocation,
       }),
     });
@@ -55,7 +93,7 @@ function Signup() {
       <div>
         <Navbar />
       </div>
-      <div className="container"> 
+      <div className="container d-flex flex-column align-items-center mt-5"> 
         <form
           className="w-50 m-auto mt-5 border bg-dark border-success rounded"
           onSubmit={handleSubmit}
@@ -129,6 +167,27 @@ function Signup() {
             Already a user
           </Link>
         </form>
+
+        <div>or</div>
+
+        <button onClick={()=>{
+          firebase.signInWithGoogle()
+          }}
+          className="m-3 btn btn-success"
+        >
+          Sign up using Google
+          
+        </button>
+
+        <button onClick={()=>{
+          firebase.signInWithGithub()
+          }}
+          className="m-3 btn btn-success"
+        >
+          Sign up using Github
+          
+        </button>
+
       </div>
       <div>
         <Footer />
