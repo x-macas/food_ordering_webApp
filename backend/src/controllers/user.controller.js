@@ -73,6 +73,8 @@ const oauthLoginUser = asyncHandler( async (req,res,next) => {
     if(!curr_user){
         throw new ApiError(404, "user does not exist");
     }
+
+    return res.status(200).json({message: "Login done successfully"});
 })
 
 

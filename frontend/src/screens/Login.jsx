@@ -3,12 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { useFirebase } from "./context/Firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import { signOut } from "firebase/auth";
 
 function Login() {
   const navigate = useNavigate();
   const firebase = useFirebase();
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [invalid, setInvalid] = useState(false);
+  const [nouser, setNoUser] = useState(false);
   const [user, setUser] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -59,7 +61,10 @@ function Login() {
     })
   },[onAuthStateChanged])
 
+  console.log(user);
+
   const firebaseAuthentication = async (user) => {
+    console.log("HOla");
     const response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/oauthlogin", {
         method: 'POST',
         headers: {
@@ -72,14 +77,23 @@ function Login() {
           authProvider: "google"
         })
     })
+    console.log("CHomU");
 
     if(response.ok){
       localStorage.setItem("profile", user.displayName);
       localStorage.setItem("token", user.accessToken);
       localStorage.setItem("userEmail", user.email);
       navigate("/");
+    }else{
+      signOut(firebase.firebaseAuth).catch(error => {
+        console.error("Error signing out:", error);
+      });
+      setNoUser(true);
+      
     }
   }
+
+  console.log(nouser);
 
 
   useEffect(() => {
@@ -200,6 +214,13 @@ function Login() {
           invalid && (
             <div className="alert alert-danger d-flex flex-column align-items-start p-3 mt-3 rounded">
               <p className="mb-1">Sorry, unrecognized credentials.</p>
+            </div>
+          )
+        }
+        {
+          nouser && (
+            <div className="alert alert-danger d-flex flex-column align-items-start p-3 mt-3 rounded">
+              <p className="mb-1">Sorry, user do not exists.</p>
             </div>
           )
         }
