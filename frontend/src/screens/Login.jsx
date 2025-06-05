@@ -17,7 +17,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://food-server-y4cf.onrender.comapi/auth/login', {
+      const response = await fetch('https://food-server-y4cf.onrender.com/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ function Login() {
 
   const firebaseAuthentication = async (user) => {
     console.log("HOla");
-    const response = await fetch("https://food-server-y4cf.onrender.comapi/auth/oauthlogin", {
+    const response = await fetch("https://food-server-y4cf.onrender.com/api/auth/oauthlogin", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ function Login() {
 
 
   // useEffect(() => {
-  //   fetch("https://food-server-y4cf.onrender.comapi/auth/user", {
+  //   fetch("https://food-server-y4cf.onrender.com/api/auth/user", {
   //     method: "GET",
   //     credentials: "include", // Ensures cookies (session) are sent
   //   })
@@ -128,7 +128,7 @@ function Login() {
   
 
   // const handleGoogle = () => {
-  //   window.location.href = "https://food-server-y4cf.onrender.comapi/auth/google";
+  //   window.location.href = "https://food-server-y4cf.onrender.com/api/auth/google";
   // };
 
   const onChange = (e) => {
