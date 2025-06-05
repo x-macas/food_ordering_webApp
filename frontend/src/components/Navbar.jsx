@@ -89,7 +89,7 @@ function Navbar() {
       >
         <div className="container-fluid">
           <Link className="navbar-brand fs-1 fst-italic" to="/">
-            Webomato
+            Foodovo
           </Link>
           <button
             className="navbar-toggler"
