@@ -18,7 +18,7 @@ function Navbar() {
 
 
   // const fetchGoogleAuthData = async () => {
-  //   const response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/google/data", {
+  //   const response = await fetch("https://food-server-y4cf.onrender.comapi/auth/google/data", {
   //     method: "GET",
   //     headers: {
   //       "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function Navbar() {
       localStorage.removeItem("userEmail");
       localStorage.removeItem("token");
   
-      const response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/logout", {
+      const response = await fetch("https://food-server-y4cf.onrender.comapi/auth/logout", {
         method: "GET",
         credentials: "include",
       });

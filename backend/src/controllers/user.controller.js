@@ -12,15 +12,15 @@ const passport = require("passport");
 // const googleAuth = passport.authenticate("google", { scope: ["profile", "email"] });
 
 // const googleCallback = (req, res, next) => {
-//     passport.authenticate("google", { failureRedirect: "https://webomato.netlify.app/login" }, 
+//     passport.authenticate("google", { failureRedirect: "https://foodovo.netlify.app/login" }, 
 //     (err, user, info) => {
 //       if (err) return next(err);
-//       if (!user) return res.redirect("https://webomato.netlify.app/login");
+//       if (!user) return res.redirect("https://foodovo.netlify.app/login");
   
 //       // Log the user in and redirect
 //       req.logIn(user, (err) => {
 //         if (err) return next(err);
-//         res.redirect("https://webomato.netlify.app");
+//         res.redirect("https://foodovo.netlify.app");
 //       });
 //     })(req, res, next);
 // };

@@ -10,7 +10,7 @@ function Home() {
   const [foodItems, setFoodItems] = useState([]);
 
   const loadFoodItems = async () => {
-    let response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/data/foodData",{
+    let response = await fetch("https://food-server-y4cf.onrender.comapi/data/foodData",{
       method: "GET",
       headers:{
         'content-Type': "application/json",
@@ -23,7 +23,7 @@ function Home() {
   };
   
   // const fetchGoogleAuthData = async () => {
-  //     let response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/google/data", {
+  //     let response = await fetch("https://food-server-y4cf.onrender.comapi/auth/google/data", {
   //       method: "GET",
   //       headers: {
   //         "Content-Type": "application/json",

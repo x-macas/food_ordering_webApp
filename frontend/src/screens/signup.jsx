@@ -22,7 +22,7 @@ function Signup() {
       },[onAuthStateChanged])
     
       const firebaseAuthentication = async (user) => {
-        const response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/oauth", {
+        const response = await fetch("https://food-server-y4cf.onrender.comapi/auth/oauth", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("https://dipteshs-food-ordering-webapp.onrender.com/api/auth/register", {
+    const response = await fetch("https://food-server-y4cf.onrender.comapi/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
